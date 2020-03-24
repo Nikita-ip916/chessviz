@@ -1,4 +1,4 @@
-#include "Procedures.c"
+#include "board_fill_plain.c"
 #include <stdio.h>
 #include <stdlib.h>
 int main()
