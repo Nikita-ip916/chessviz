@@ -1,5 +1,5 @@
-#include "board_fill_plain.c"
-#include "board_print_plain.c"
+#include "board_fill_plain.h"
+#include "board_print_plain.h"
 #include <stdio.h>
 #include <stdlib.h>
 int main()
