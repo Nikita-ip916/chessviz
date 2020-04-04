@@ -15,8 +15,9 @@ void Board(int n, int m, int b[][m])
                 printf("\nRight %d move of black pawn  ", i + 1);
             }
         } else {
-            printf("\nWrong %d move ", i);
+            printf("\nWrong %d move ", i + 1);
         }
         i++;
     }
+    puts("\n");
 }

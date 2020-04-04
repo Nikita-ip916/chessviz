@@ -1,3 +1,4 @@
+#include "board.h"
 #include "board_fill_plain.h"
 #include "board_print_plain.h"
 #include "board_read.h"
@@ -9,4 +10,5 @@ int main()
     FillBoard(n, n, a);
     PrintBoard(n, n, a);
     ReadBoard(m, k, b);
+    Board(m, k, b);
 }
