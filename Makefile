@@ -1,12 +1,15 @@
 CC = gcc
 CFLAGS = -Wall -Werror -c
-OUT = deposit-calc
+OUT = out
+DIR = build
+DIR2 = bin
+F = -o
 all:
-		$(CC) $(CFLAGS) src/main.c
-		$(CC) $(CFLAGS) src/board_fill_plain.c
-		$(CC) $(CFLAGS) src/board_print_plain.c
-		$(CC) $(CFLAGS) src/board_read.c
-		$(CC) $(CFLAGS) src/board.c
-		$(CC) main.o board_fill_plain.o board_print_plain.o board_read.o board.o -o $(OUT)
+		$(CC) $(F) $(DIR)/main.o $(CFLAGS) src/main.c
+		$(CC) $(F) $(DIR)/board_fill_plain.o $(CFLAGS) src/board_fill_plain.c
+		$(CC) $(F) $(DIR)/board_print_plain.o $(CFLAGS) src/board_print_plain.c
+		$(CC) $(F) $(DIR)/board_read.o $(CFLAGS) src/board_read.c
+		$(CC) $(F) $(DIR)/board.o $(CFLAGS) src/board.c
+		$(CC) $(DIR)/main.o $(DIR)/board_fill_plain.o $(DIR)/board_print_plain.o $(DIR)/board_read.o $(DIR)/board.o -o $(DIR2)/$(OUT)
 clean:
-		rm -rf $(OUT) *.o *.exe
+		rm -rf $(DIR2)/$(OUT) $(DIR)/*.o 
