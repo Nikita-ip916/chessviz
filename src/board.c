@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-void Board(int n, int m, int b[][m])
+void Board(int k, int l, int a[][l], int n, int m, int b[][m])
 {
     int i = 0;
     while (b[i][0] != 0) {
