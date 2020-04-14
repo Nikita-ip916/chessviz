@@ -10,5 +10,5 @@ int main()
     FillBoard(n, n, a);
     PrintBoard(n, n, a);
     ReadBoard(m, k, b);
-    Board(m, k, b);
+    Board(n, n, a, m, k, b);
 }
