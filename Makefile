@@ -10,6 +10,6 @@ all:
 		$(CC) $(F) $(DIR)/board_print_plain.o $(CFLAGS) src/board_print_plain.c
 		$(CC) $(F) $(DIR)/board_read.o $(CFLAGS) src/board_read.c
 		$(CC) $(F) $(DIR)/board.o $(CFLAGS) src/board.c
-		$(CC) $(DIR)/main.o $(DIR)/board_fill_plain.o $(DIR)/board_print_plain.o $(DIR)/board_read.o $(DIR)/board.o -o $(DIR2)/$(OUT)
+		$(CC) $(DIR)/*.o -o $(DIR2)/$(OUT)
 clean:
-		rm -rf $(DIR2)/$(OUT) $(DIR)/*.o 
+		rm -rf $(DIR2)/$(OUT) $(DIR)/*.o
