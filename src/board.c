@@ -34,13 +34,13 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
             }
         } else if (
                 b[i][3] == 45 && b[i][1] >= 97 && b[i][1] <= 104
-                && b[i][2] >= 49 && b[i][2] <= 56 && b[i][6] == 0) {
+                && b[i][2] >= 49 && b[i][2] <= 56 && b[i][6] == 0
+                && (a[56 - b[i][2]][b[i][1] - 96] == b[i][0]
+                    || a[56 - b[i][2]][b[i][1] - 96] == b[i][0] + 32)
+                && a[56 - b[i][5]][b[i][4] - 96] == 32) {
             switch (b[i][0]) {
-            case 75:
-                if (abs(b[i][4] - b[i][1]) < 2 && abs(b[i][5] - b[i][2]) < 2
-                    && (a[56 - b[i][2]][b[i][1] - 96] == b[i][0]
-                        || a[56 - b[i][2]][b[i][1] - 96] == b[i][0] + 32)
-                    && a[56 - b[i][5]][b[i][4] - 96] == 32) {
+            case 75: // King
+                if (abs(b[i][4] - b[i][1]) < 2 && abs(b[i][5] - b[i][2]) < 2) {
                     if (i % 2 == 0) {
                         printf("\nRight %d move of white king\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
@@ -52,11 +52,23 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                     PrintBoard(k, l, a);
                 }
                 break;
-            case 81:
-            case 82:
-            case 78:
-            case 66:
-            case 80:
+            case 81: // Queen
+                if (abs(b[i][4] - b[i][1]) < 2 && abs(b[i][5] - b[i][2]) < 2) {
+                    if (i % 2 == 0) {
+                        printf("\nRight %d move of white queen\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                    } else {
+                        printf("\nRight %d move of black queen\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    }
+                    a[56 - b[i][2]][b[i][1] - 96] = 32;
+                    PrintBoard(k, l, a);
+                }
+                break;
+            case 82: // Rook
+            case 78: // kNight
+            case 66: // Bishop
+            case 80: // Pawn
             default:
                 printf("\nWrong %d move ", i + 1);
                 break;
