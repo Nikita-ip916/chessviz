@@ -37,12 +37,29 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 && b[i][2] >= 49 && b[i][2] <= 56 && b[i][6] == 0) {
             switch (b[i][0]) {
             case 75:
+                if (abs(b[i][4] - b[i][1]) < 2 && abs(b[i][5] - b[i][2]) < 2
+                    && (a[56 - b[i][2]][b[i][1] - 96] == b[i][0]
+                        || a[56 - b[i][2]][b[i][1] - 96] == b[i][0] + 32)
+                    && a[56 - b[i][5]][b[i][4] - 96] == 32) {
+                    if (i % 2 == 0) {
+                        printf("\nRight %d move of white king\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                    } else {
+                        printf("\nRight %d move of black king\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    }
+                    a[56 - b[i][2]][b[i][1] - 96] = 32;
+                    PrintBoard(k, l, a);
+                }
+                break;
             case 81:
             case 82:
             case 78:
             case 66:
             case 80:
             default:
+                printf("\nWrong %d move ", i + 1);
+                break;
             }
         } else {
             printf("\nWrong %d move ", i + 1);
