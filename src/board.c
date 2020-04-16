@@ -67,6 +67,18 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 }
                 break;
             case 82: // Rook
+                if (b[i][4] - b[i][1] == 0 || b[i][5] - b[i][2] == 0) {
+                    if (i % 2 == 0) {
+                        printf("\nRight %d move of white rook\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                    } else {
+                        printf("\nRight %d move of black rook\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    }
+                    a[56 - b[i][2]][b[i][1] - 96] = 32;
+                    PrintBoard(k, l, a);
+                }
+                break;
             case 78: // kNight
             case 66: // Bishop
             case 80: // Pawn
