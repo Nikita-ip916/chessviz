@@ -1,4 +1,5 @@
 #include "board_print_plain.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 void Board(int k, int l, int a[][l], int n, int m, int b[][m])
@@ -30,6 +31,18 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 PrintBoard(k, l, a);
             } else {
                 printf("\nWrong %d move ", i + 1);
+            }
+        } else if (
+                b[i][3] == 45 && b[i][1] >= 97 && b[i][1] <= 104
+                && b[i][2] >= 49 && b[i][2] <= 56 && b[i][6] == 0) {
+            switch (b[i][0]) {
+            case 75:
+            case 81:
+            case 82:
+            case 78:
+            case 66:
+            case 80:
+            default:
             }
         } else {
             printf("\nWrong %d move ", i + 1);
