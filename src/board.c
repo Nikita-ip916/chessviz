@@ -14,7 +14,7 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 && a[56 - b[i][4]][b[i][3] - 96]
                         == 32) { // m.white; 2el "2"; 5el "3"or"4"; aTake="p";
                                  // aPut=" "
-                printf("\nRight %d move of white pawn\n", i + 1);
+                printf("\nRight %d first move of white pawn\n", i + 1);
                 a[56 - b[i][1]][b[i][0] - 96] = 32;
                 a[56 - b[i][4]][b[i][3] - 96] = 80;
                 PrintBoard(k, l, a);
@@ -25,7 +25,7 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                     && a[56 - b[i][4]][b[i][3] - 96]
                             == 32) { // m.black; 2el "7"; 5el "6"or"5";
                                      // aTake="p"; aPut=" "
-                printf("\nRight %d move of black pawn\n", i + 1);
+                printf("\nRight %d first move of black pawn\n", i + 1);
                 a[56 - b[i][1]][b[i][0] - 96] = 32;
                 a[56 - b[i][4]][b[i][3] - 96] = 112;
                 PrintBoard(k, l, a);
@@ -128,6 +128,22 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                     break;
                 }
             case 80: // Pawn
+                if (b[i][5] - b[i][2] == 1 && i % 2 == 0
+                    && a[56 - b[i][2]][b[i][1] - 96] < 91) {
+                    printf("\nRight %d move of white pawn\n", i + 1);
+                    a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                } else if (
+                        b[i][5] - b[i][2] == -1 && i % 2 == 1
+                        && a[56 - b[i][2]][b[i][1] - 96] > 96) {
+                    printf("\nRight %d move of black pawn\n", i + 1);
+                    a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                } else {
+                    printf("\nWrong %d move ", i + 1);
+                    break;
+                }
+                a[56 - b[i][2]][b[i][1] - 96] = 32;
+                PrintBoard(k, l, a);
+                break;
             default:
                 printf("\nWrong %d move ", i + 1);
                 break;
