@@ -53,7 +53,8 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 }
                 break;
             case 81: // Queen
-                if (abs(b[i][4] - b[i][1]) < 2 && abs(b[i][5] - b[i][2]) < 2) {
+                if (abs(b[i][4] - b[i][1]) == abs(b[i][5] - b[i][2])
+                    || b[i][4] - b[i][1] == 0 || b[i][5] - b[i][2] == 0) {
                     if (i % 2 == 0) {
                         printf("\nRight %d move of white queen\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
