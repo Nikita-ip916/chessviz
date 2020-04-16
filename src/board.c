@@ -111,6 +111,22 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                     break;
                 }
             case 66: // Bishop
+                if (abs(b[i][4] - b[i][1]) == abs(b[i][5] - b[i][2])) {
+                    if (i % 2 == 0 && a[56 - b[i][2]][b[i][1] - 96] < 91) {
+                        printf("\nRight %d move of white bishop\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                    } else if (
+                            i % 2 == 1 && a[56 - b[i][2]][b[i][1] - 96] > 96) {
+                        printf("\nRight %d move of black bishop\n", i + 1);
+                        a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    } else {
+                        printf("\nWrong %d move ", i + 1);
+                        break;
+                    }
+                    a[56 - b[i][2]][b[i][1] - 96] = 32;
+                    PrintBoard(k, l, a);
+                    break;
+                }
             case 80: // Pawn
             default:
                 printf("\nWrong %d move ", i + 1);
