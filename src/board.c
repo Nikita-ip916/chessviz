@@ -41,12 +41,16 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
             switch (b[i][0]) {
             case 75: // King
                 if (abs(b[i][4] - b[i][1]) < 2 && abs(b[i][5] - b[i][2]) < 2) {
-                    if (i % 2 == 0) {
+                    if (i % 2 == 0 && a[56 - b[i][2]][b[i][1] - 96] < 91) {
                         printf("\nRight %d move of white king\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
-                    } else {
+                    } else if (
+                            i % 2 == 1 && a[56 - b[i][2]][b[i][1] - 96] > 96) {
                         printf("\nRight %d move of black king\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    } else {
+                        printf("\nWrong %d move ", i + 1);
+                        break;
                     }
                     a[56 - b[i][2]][b[i][1] - 96] = 32;
                     PrintBoard(k, l, a);
@@ -55,12 +59,16 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
             case 81: // Queen
                 if (abs(b[i][4] - b[i][1]) == abs(b[i][5] - b[i][2])
                     || b[i][4] - b[i][1] == 0 || b[i][5] - b[i][2] == 0) {
-                    if (i % 2 == 0) {
+                    if (i % 2 == 0 && a[56 - b[i][2]][b[i][1] - 96] < 91) {
                         printf("\nRight %d move of white queen\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
-                    } else {
+                    } else if (
+                            i % 2 == 1 && a[56 - b[i][2]][b[i][1] - 96] > 96) {
                         printf("\nRight %d move of black queen\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    } else {
+                        printf("\nWrong %d move ", i + 1);
+                        break;
                     }
                     a[56 - b[i][2]][b[i][1] - 96] = 32;
                     PrintBoard(k, l, a);
@@ -68,12 +76,16 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 }
             case 82: // Rook
                 if (b[i][4] - b[i][1] == 0 || b[i][5] - b[i][2] == 0) {
-                    if (i % 2 == 0) {
+                    if (i % 2 == 0 && a[56 - b[i][2]][b[i][1] - 96] < 91) {
                         printf("\nRight %d move of white rook\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
-                    } else {
+                    } else if (
+                            i % 2 == 1 && a[56 - b[i][2]][b[i][1] - 96] > 96) {
                         printf("\nRight %d move of black rook\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    } else {
+                        printf("\nWrong %d move ", i + 1);
+                        break;
                     }
                     a[56 - b[i][2]][b[i][1] - 96] = 32;
                     PrintBoard(k, l, a);
@@ -83,12 +95,16 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m])
                 if ((abs(b[i][4] - b[i][1]) == 2 && abs(b[i][5] - b[i][2]) == 1)
                     || (abs(b[i][4] - b[i][1]) == 1
                         && abs(b[i][5] - b[i][2]) == 2)) {
-                    if (i % 2 == 0) {
+                    if (i % 2 == 0 && a[56 - b[i][2]][b[i][1] - 96] < 91) {
                         printf("\nRight %d move of white knight\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
-                    } else {
+                    } else if (
+                            i % 2 == 1 && a[56 - b[i][2]][b[i][1] - 96] > 96) {
                         printf("\nRight %d move of black knight\n", i + 1);
                         a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                    } else {
+                        printf("\nWrong %d move ", i + 1);
+                        break;
                     }
                     a[56 - b[i][2]][b[i][1] - 96] = 32;
                     PrintBoard(k, l, a);
