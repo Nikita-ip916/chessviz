@@ -11,7 +11,8 @@ int main()
     PrintBoard(n, n, a);
     ReadBoard(m, k, b);
     while (b[i][0] != 0) {
-        Board(n, n, a, m, k, b);
+        Board(n, n, a, m, k, b, i);
+        PrintBoard(n, n, a);
         i++;
     }
     printf("\n");

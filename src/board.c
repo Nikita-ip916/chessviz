@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-void Board(int k, int l, int a[][l], int n, int m, int b[][m])
+void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
 {
     if (b[i][2] == 45 && b[i][0] >= 97 && b[i][0] <= 104 && b[i][0] == b[i][3]
         && b[i][5] == 0) { // 3el "-"; 1el=4el "a"-"h"; 6el empty
