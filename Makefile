@@ -19,4 +19,4 @@ all:
 		$(CC) $(DIR)/$(DIR3)/*.o -o $(DIR2)/$(OUT)
 		$(CC) $(DIR)/$(DIR3)/sum.o $(DIR)/$(DIR3)/board*.o $(DIR)/$(DIR4)/*.o -o $(DIR2)/$(OUT)-$(DIR4)
 clean:
-		rm -rf $(DIR2)/chessviz* $(DIR)/*.o
+		rm -rf $(DIR2)/chessviz* $(DIR)/$(DIR3)/*.o $(DIR)/$(DIR4)/*.o
