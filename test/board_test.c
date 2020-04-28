@@ -1,7 +1,6 @@
 #include <board.h>
 #include <board_fill_plain.h>
 #include <ctest.h>
-#include <sum.h>
 CTEST(first_pawn_move, one_step_move_w1)
 {
     // Given
