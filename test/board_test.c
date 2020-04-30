@@ -464,3 +464,324 @@ CTEST(king_move, wrong_move_rules)
         }
     }
 }
+CTEST(queen_move, move_diagW)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[6][2] = 81;
+    exp[6][2] = 32;
+    exp[4][4] = 81;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 81;
+    b[i][1] = 98;
+    b[i][2] = 50;
+    b[i][3] = 45;
+    b[i][4] = 100;
+    b[i][5] = 52;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, move_vertW)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 81;
+    exp[4][5] = 32;
+    exp[0][5] = 81;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 101;
+    b[i][5] = 56;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, move_horizW)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 81;
+    exp[4][5] = 32;
+    exp[4][1] = 81;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 97;
+    b[i][5] = 52;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, move_diagB)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[6][2] = 113;
+    exp[6][2] = 32;
+    exp[4][4] = 113;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 1;
+    b[i][0] = 81;
+    b[i][1] = 98;
+    b[i][2] = 50;
+    b[i][3] = 45;
+    b[i][4] = 100;
+    b[i][5] = 52;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, move_vertB)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 113;
+    exp[4][5] = 32;
+    exp[0][5] = 113;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 1;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 101;
+    b[i][5] = 56;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, move_horizB)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 113;
+    exp[4][5] = 32;
+    exp[4][1] = 113;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 1;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 97;
+    b[i][5] = 52;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, wrong_move_vert)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 81;
+    exp[4][5] = 81;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 101;
+    b[i][5] = 48;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, wrong_move_horiz)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 113;
+    exp[4][5] = 113;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 1;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 105;
+    b[i][5] = 52;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(queen_move, wrong_move_rules)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[4][5] = 81;
+    exp[4][5] = 81;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 81;
+    b[i][1] = 101;
+    b[i][2] = 52;
+    b[i][3] = 45;
+    b[i][4] = 99;
+    b[i][5] = 53;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
