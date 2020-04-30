@@ -23,7 +23,7 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
             a[56 - b[i][1]][b[i][0] - 96] = 32;
             a[56 - b[i][4]][b[i][3] - 96] = 112;
         } else {
-            printf("\nWrong %d move ", i + 1);
+            printf("\nWrong %d first move (invalid order) pawn\n", i + 1);
         }
     } else if (
             ((b[i][3] == 45 && a[56 - b[i][5]][b[i][4] - 96] == 32)
@@ -42,12 +42,12 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     printf("\nRight %d move of black king\n", i + 1);
                     a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
                 } else {
-                    printf("\nWrong %d move ", i + 1);
+                    printf("\nWrong %d move (invalid order) king\n", i + 1);
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
             } else {
-                printf("\nWrong %d move ", i + 1);
+                printf("\nWrong %d move (invalid position) king\n", i + 1);
             }
             break;
         case 81: // Queen
@@ -60,12 +60,12 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     printf("\nRight %d move of black queen\n", i + 1);
                     a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
                 } else {
-                    printf("\nWrong %d move ", i + 1);
+                    printf("\nWrong %d move (invalid order) queen\n", i + 1);
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
             } else {
-                printf("\nWrong %d move ", i + 1);
+                printf("\nWrong %d move (invalid position) queen\n", i + 1);
             }
             break;
         case 82: // Rook
@@ -77,12 +77,12 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     printf("\nRight %d move of black rook\n", i + 1);
                     a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
                 } else {
-                    printf("\nWrong %d move ", i + 1);
+                    printf("\nWrong %d move (invalid order) rook\n", i + 1);
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
             } else {
-                printf("\nWrong %d move ", i + 1);
+                printf("\nWrong %d move (invalid position) rook\n", i + 1);
             }
             break;
         case 78: // kNight
@@ -96,12 +96,12 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     printf("\nRight %d move of black knight\n", i + 1);
                     a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
                 } else {
-                    printf("\nWrong %d move ", i + 1);
+                    printf("\nWrong %d move (invalid order) knight\n", i + 1);
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
             } else {
-                printf("\nWrong %d move ", i + 1);
+                printf("\nWrong %d move (invalid position) knight\n", i + 1);
             }
             break;
         case 66: // Bishop
@@ -113,35 +113,39 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     printf("\nRight %d move of black bishop\n", i + 1);
                     a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
                 } else {
-                    printf("\nWrong %d move ", i + 1);
+                    printf("\nWrong %d move (invalid order) bishop\n", i + 1);
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
             } else {
-                printf("\nWrong %d move ", i + 1);
+                printf("\nWrong %d move (invalid position) bishop\n", i + 1);
             }
             break;
         case 80: // Pawn
-            if (b[i][5] - b[i][2] == 1 && i % 2 == 0
-                && a[56 - b[i][2]][b[i][1] - 96] < 91) {
-                printf("\nRight %d move of white pawn\n", i + 1);
-                a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
-            } else if (
-                    b[i][5] - b[i][2] == -1 && i % 2 == 1
-                    && a[56 - b[i][2]][b[i][1] - 96] > 96) {
-                printf("\nRight %d move of black pawn\n", i + 1);
-                a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+            if (abs(b[i][5] - b[i][2]) == 1) {
+                if (b[i][5] - b[i][2] == 1 && i % 2 == 0
+                    && a[56 - b[i][2]][b[i][1] - 96] < 91) {
+                    printf("\nRight %d move of white pawn\n", i + 1);
+                    a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                } else if (
+                        b[i][5] - b[i][2] == -1 && i % 2 == 1
+                        && a[56 - b[i][2]][b[i][1] - 96] > 96) {
+                    printf("\nRight %d move of black pawn\n", i + 1);
+                    a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                } else {
+                    printf("\nWrong %d move (invalid order) pawn\n", i + 1);
+                    break;
+                }
+                a[56 - b[i][2]][b[i][1] - 96] = 32;
             } else {
-                printf("\nWrong %d move ", i + 1);
-                break;
+                printf("\nWrong %d move (invalid position) pawn\n", i + 1);
             }
-            a[56 - b[i][2]][b[i][1] - 96] = 32;
             break;
         default:
-            printf("\nWrong %d move ", i + 1);
+            printf("\nWrong %d move (invalid figure)\n", i + 1);
             break;
         }
     } else {
-        printf("\nWrong %d move ", i + 1);
+        printf("\nWrong %d move (invalid enter)\n", i + 1);
     }
 }
