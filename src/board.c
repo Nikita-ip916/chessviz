@@ -46,8 +46,9 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
+            } else {
+                printf("\nWrong %d move ", i + 1);
             }
-            printf("\nWrong %d move ", i + 1);
             break;
         case 81: // Queen
             if (abs(b[i][4] - b[i][1]) == abs(b[i][5] - b[i][2])
@@ -63,8 +64,9 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
+            } else {
+                printf("\nWrong %d move ", i + 1);
             }
-            printf("\nWrong %d move ", i + 1);
             break;
         case 82: // Rook
             if (b[i][4] - b[i][1] == 0 || b[i][5] - b[i][2] == 0) {
@@ -79,8 +81,9 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
+            } else {
+                printf("\nWrong %d move ", i + 1);
             }
-            printf("\nWrong %d move ", i + 1);
             break;
         case 78: // kNight
             if ((abs(b[i][4] - b[i][1]) == 2 && abs(b[i][5] - b[i][2]) == 1)
@@ -97,8 +100,9 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
+            } else {
+                printf("\nWrong %d move ", i + 1);
             }
-            printf("\nWrong %d move ", i + 1);
             break;
         case 66: // Bishop
             if (abs(b[i][4] - b[i][1]) == abs(b[i][5] - b[i][2])) {
@@ -113,8 +117,9 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
+            } else {
+                printf("\nWrong %d move ", i + 1);
             }
-            printf("\nWrong %d move ", i + 1);
             break;
         case 80: // Pawn
             if (b[i][5] - b[i][2] == 1 && i % 2 == 0
