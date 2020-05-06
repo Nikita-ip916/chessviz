@@ -1452,3 +1452,145 @@ CTEST(bishop_move, wrong_move_order)
         }
     }
 }
+CTEST(pawn_move, moveW)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[6][2] = 80;
+    exp[6][2] = 32;
+    exp[5][2] = 80;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 80;
+    b[i][1] = 98;
+    b[i][2] = 50;
+    b[i][3] = 45;
+    b[i][4] = 98;
+    b[i][5] = 51;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(pawn_move, moveB)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[1][2] = 112;
+    exp[1][2] = 32;
+    exp[2][2] = 112;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 1;
+    b[i][0] = 80;
+    b[i][1] = 98;
+    b[i][2] = 55;
+    b[i][3] = 45;
+    b[i][4] = 98;
+    b[i][5] = 54;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(pawn_move, wrong_move_rules)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[6][2] = 80;
+    exp[6][2] = 80;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 0;
+    b[i][0] = 80;
+    b[i][1] = 98;
+    b[i][2] = 50;
+    b[i][3] = 45;
+    b[i][4] = 98;
+    b[i][5] = 53;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
+CTEST(pawn_move, wrong_move_order)
+{
+    // Given
+    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
+    int exp[n][n];
+    FillBoard(n, n, a);
+    FillBoard(n, n, exp);
+    for (i = 0; i < n - 1; i++) {
+        for (j = 1; j < n; j++) {
+            a[i][j] = exp[i][j] = 32;
+        }
+    }
+    a[1][2] = 112;
+    exp[1][2] = 112;
+    for (i = 0; i < m; i++) {
+        for (j = 0; j < k; j++) {
+            b[i][j] = 0;
+        }
+    }
+    i = 2;
+    b[i][0] = 80;
+    b[i][1] = 98;
+    b[i][2] = 55;
+    b[i][3] = 45;
+    b[i][4] = 98;
+    b[i][5] = 54;
+    // When
+    Board(n, n, a, m, k, b, i);
+    // Then
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            ASSERT_EQUAL(exp[i][j], a[i][j]);
+        }
+    }
+}
