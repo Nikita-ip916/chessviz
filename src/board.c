@@ -122,7 +122,7 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
             }
             break;
         case 80: // Pawn
-            if (abs(b[i][5] - b[i][2]) == 1) {
+            if (abs(b[i][5] - b[i][2]) == 1 && b[i][4] - b[i][1] == 0) {
                 if (b[i][5] - b[i][2] == 1 && i % 2 == 0
                     && a[56 - b[i][2]][b[i][1] - 96] < 91) {
                     printf("\nRight %d move of white pawn\n", i + 1);
@@ -134,6 +134,23 @@ void Board(int k, int l, int a[][l], int n, int m, int b[][m], int i)
                     a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
                 } else {
                     printf("\nWrong %d move (invalid order) pawn\n", i + 1);
+                    break;
+                }
+                a[56 - b[i][2]][b[i][1] - 96] = 32;
+            } else if (
+                    abs(b[i][5] - b[i][2]) == 1
+                    && abs(b[i][4] - b[i][1]) == 1) {
+                if (b[i][5] - b[i][2] == 1 && i % 2 == 0
+                    && a[56 - b[i][2]][b[i][1] - 96] < 91) {
+                    printf("\nRight %d take of white pawn\n", i + 1);
+                    a[56 - b[i][5]][b[i][4] - 96] = b[i][0];
+                } else if (
+                        b[i][5] - b[i][2] == -1 && i % 2 == 1
+                        && a[56 - b[i][2]][b[i][1] - 96] > 96) {
+                    printf("\nRight %d take of black pawn\n", i + 1);
+                    a[56 - b[i][5]][b[i][4] - 96] = b[i][0] + 32;
+                } else {
+                    printf("\nWrong %d take (invalid order) pawn\n", i + 1);
                     break;
                 }
                 a[56 - b[i][2]][b[i][1] - 96] = 32;
