@@ -1,15 +1,26 @@
 CC = gcc
 CFLAGS = -Wall -Werror -c
-OUT = out
+OUT = chessviz
 DIR = build
 DIR2 = bin
+DIR3 = src
+DIR4 = test
+PRT = -I src -I thirdparty
 F = -o
-all:
-		$(CC) $(F) $(DIR)/main.o $(CFLAGS) src/main.c
-		$(CC) $(F) $(DIR)/board_fill_plain.o $(CFLAGS) src/board_fill_plain.c
-		$(CC) $(F) $(DIR)/board_print_plain.o $(CFLAGS) src/board_print_plain.c
-		$(CC) $(F) $(DIR)/board_read.o $(CFLAGS) src/board_read.c
-		$(CC) $(F) $(DIR)/board.o $(CFLAGS) src/board.c
-		$(CC) $(DIR)/*.o -o $(DIR2)/$(OUT)
+.PHONY: all prog clean test
+all: prog
+prog:
+		$(CC) $(F) $(DIR)/$(DIR3)/main.o $(CFLAGS) $(DIR3)/main.c
+		$(CC) $(F) $(DIR)/$(DIR3)/board_fill_plain.o $(CFLAGS) $(DIR3)/board_fill_plain.c
+		$(CC) $(F) $(DIR)/$(DIR3)/board_print_plain.o $(CFLAGS) $(DIR3)/board_print_plain.c
+		$(CC) $(F) $(DIR)/$(DIR3)/board_read.o $(CFLAGS) $(DIR3)/board_read.c
+		$(CC) $(F) $(DIR)/$(DIR3)/board.o $(CFLAGS) $(DIR3)/board.c
+		$(CC) $(DIR)/$(DIR3)/*.o -o $(DIR2)/$(OUT)
+test:
+		$(CC) $(PRT) $(CFLAGS) $(DIR4)/main.c $(F) $(DIR)/$(DIR4)/main.o
+		$(CC) $(PRT) $(CFLAGS) $(DIR4)/board_test.c $(F) $(DIR)/$(DIR4)/board_test.o
+		$(CC) $(DIR)/$(DIR3)/board*.o $(DIR)/$(DIR4)/*.o -o $(DIR2)/$(OUT)-$(DIR4)
+		./bin/chessviz-test
+		echo "Все тесты пройдены!"
 clean:
-		rm -rf $(DIR2)/$(OUT) $(DIR)/*.o
+		rm -rf $(DIR2)/chessviz* $(DIR)/$(DIR3)/*.o $(DIR)/$(DIR4)/*.o
