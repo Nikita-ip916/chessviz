@@ -190,9 +190,8 @@ CTEST(king_move, move_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 75;
+    game_board[6][2] = exp_game_board[5][2] = 75;
     exp_game_board[6][2] = 32;
-    exp_game_board[5][2] = 75;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -227,9 +226,8 @@ CTEST(king_move, move_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 107;
+    game_board[6][2] = exp_game_board[5][3] = 107;
     exp_game_board[6][2] = 32;
-    exp_game_board[5][3] = 107;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -264,8 +262,7 @@ CTEST(king_move, wrong_move_horiz)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][1] = 75;
-    exp_game_board[4][1] = 75;
+    game_board[4][1] = exp_game_board[4][1] = 75;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -300,8 +297,7 @@ CTEST(king_move, wrong_move_vert)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[0][4] = 107;
-    exp_game_board[0][4] = 107;
+    game_board[0][4] = exp_game_board[0][4] = 107;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -336,8 +332,7 @@ CTEST(king_move, wrong_move_rules)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 75;
-    exp_game_board[4][5] = 75;
+    game_board[4][5] = exp_game_board[4][5] = 75;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -372,8 +367,7 @@ CTEST(king_move, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 75;
-    exp_game_board[6][2] = 75;
+    game_board[6][2] = exp_game_board[6][2] = 75;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -408,9 +402,8 @@ CTEST(queen_move, move_diag_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 81;
+    game_board[6][2] = exp_game_board[4][4] = 81;
     exp_game_board[6][2] = 32;
-    exp_game_board[4][4] = 81;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -445,9 +438,8 @@ CTEST(queen_move, move_vert_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 81;
+    game_board[4][5] = exp_game_board[0][5] = 81;
     exp_game_board[4][5] = 32;
-    exp_game_board[0][5] = 81;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -482,9 +474,8 @@ CTEST(queen_move, move_horiz_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 81;
+    game_board[4][5] = exp_game_board[4][1] = 81;
     exp_game_board[4][5] = 32;
-    exp_game_board[4][1] = 81;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -519,9 +510,8 @@ CTEST(queen_move, move_diag_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 113;
+    game_board[6][2] = exp_game_board[4][4] = 113;
     exp_game_board[6][2] = 32;
-    exp_game_board[4][4] = 113;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -556,9 +546,8 @@ CTEST(queen_move, move_vert_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 113;
+    game_board[4][5] = exp_game_board[0][5] = 113;
     exp_game_board[4][5] = 32;
-    exp_game_board[0][5] = 113;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -593,9 +582,8 @@ CTEST(queen_move, move_horiz_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 113;
+    game_board[4][5] = exp_game_board[4][1] = 113;
     exp_game_board[4][5] = 32;
-    exp_game_board[4][1] = 113;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -630,8 +618,7 @@ CTEST(queen_move, wrong_move_vert)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 81;
-    exp_game_board[4][5] = 81;
+    game_board[4][5] = exp_game_board[4][5] = 81;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -666,8 +653,7 @@ CTEST(queen_move, wrong_move_horiz)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 113;
-    exp_game_board[4][5] = 113;
+    game_board[4][5] = exp_game_board[4][5] = 113;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -702,8 +688,7 @@ CTEST(queen_move, wrong_move_rules)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 81;
-    exp_game_board[4][5] = 81;
+    game_board[4][5] = exp_game_board[4][5] = 81;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -738,8 +723,7 @@ CTEST(queen_move, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[4][5] = 113;
-    exp_game_board[4][5] = 113;
+    game_board[4][5] = exp_game_board[4][5] = 113;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -774,9 +758,8 @@ CTEST(rook_move, move_vert_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 82;
+    game_board[6][2] = exp_game_board[2][2] = 82;
     exp_game_board[6][2] = 32;
-    exp_game_board[2][2] = 82;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -811,9 +794,8 @@ CTEST(rook_move, move_horiz_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 82;
+    game_board[6][2] = exp_game_board[6][6] = 82;
     exp_game_board[6][2] = 32;
-    exp_game_board[6][6] = 82;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -848,9 +830,8 @@ CTEST(rook_move, move_vert_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 114;
+    game_board[6][2] = exp_game_board[2][2] = 114;
     exp_game_board[6][2] = 32;
-    exp_game_board[2][2] = 114;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -885,9 +866,8 @@ CTEST(rook_move, move_horiz_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 114;
+    game_board[6][2] = exp_game_board[6][6] = 114;
     exp_game_board[6][2] = 32;
-    exp_game_board[6][6] = 114;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -922,8 +902,7 @@ CTEST(rook_move, wrong_move_rules)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 114;
-    exp_game_board[6][2] = 114;
+    game_board[6][2] = exp_game_board[6][2] = 114;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -958,8 +937,7 @@ CTEST(rook_move, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 82;
-    exp_game_board[6][2] = 82;
+    game_board[6][2] = exp_game_board[6][2] = 82;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -994,9 +972,8 @@ CTEST(knight_move, move_2h1v_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 78;
+    game_board[6][2] = exp_game_board[5][4] = 78;
     exp_game_board[6][2] = 32;
-    exp_game_board[5][4] = 78;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1031,9 +1008,8 @@ CTEST(knight_move, move_1h2v_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 78;
+    game_board[6][2] = exp_game_board[4][1] = 78;
     exp_game_board[6][2] = 32;
-    exp_game_board[4][1] = 78;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1068,9 +1044,8 @@ CTEST(knight_move, move_2h1v_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 110;
+    game_board[6][2] = exp_game_board[5][4] = 110;
     exp_game_board[6][2] = 32;
-    exp_game_board[5][4] = 110;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1105,9 +1080,8 @@ CTEST(knight_move, move_1h2v_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 110;
+    game_board[6][2] = exp_game_board[4][1] = 110;
     exp_game_board[6][2] = 32;
-    exp_game_board[4][1] = 110;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1142,8 +1116,7 @@ CTEST(knight_move, wrong_move_rules)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 78;
-    exp_game_board[6][2] = 78;
+    game_board[6][2] = exp_game_board[6][2] = 78;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1178,8 +1151,7 @@ CTEST(knight_move, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 78;
-    exp_game_board[6][2] = 78;
+    game_board[6][2] = exp_game_board[6][2] = 78;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1214,9 +1186,8 @@ CTEST(bishop_move, move_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 66;
+    game_board[6][2] = exp_game_board[4][4] = 66;
     exp_game_board[6][2] = 32;
-    exp_game_board[4][4] = 66;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1251,9 +1222,8 @@ CTEST(bishop_move, move_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 98;
+    game_board[6][2] = exp_game_board[4][4] = 98;
     exp_game_board[6][2] = 32;
-    exp_game_board[4][4] = 98;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1288,8 +1258,7 @@ CTEST(bishop_move, wrong_move_rules)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 66;
-    exp_game_board[6][2] = 66;
+    game_board[6][2] = exp_game_board[6][2] = 66;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1324,8 +1293,7 @@ CTEST(bishop_move, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 98;
-    exp_game_board[6][2] = 98;
+    game_board[6][2] = exp_game_board[6][2] = 98;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1360,9 +1328,8 @@ CTEST(pawn_move, move_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 80;
+    game_board[6][2] = exp_game_board[5][2] = 80;
     exp_game_board[6][2] = 32;
-    exp_game_board[5][2] = 80;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1397,9 +1364,8 @@ CTEST(pawn_move, move_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[1][2] = 112;
+    game_board[1][2] = exp_game_board[2][2] = 112;
     exp_game_board[1][2] = 32;
-    exp_game_board[2][2] = 112;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1434,8 +1400,7 @@ CTEST(pawn_move, wrong_move_rules)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 80;
-    exp_game_board[6][2] = 80;
+    game_board[6][2] = exp_game_board[6][2] = 80;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1470,8 +1435,7 @@ CTEST(pawn_move, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[1][2] = 112;
-    exp_game_board[1][2] = 112;
+    game_board[1][2] = exp_game_board[1][2] = 112;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1506,10 +1470,9 @@ CTEST(pawn_take, move_w)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[6][2] = 80;
+    game_board[6][2] = exp_game_board[5][3] = 80;
     game_board[5][3] = 112;
     exp_game_board[6][2] = 32;
-    exp_game_board[5][3] = 80;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1544,10 +1507,9 @@ CTEST(pawn_take, move_b)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[1][2] = 112;
+    game_board[1][2] = exp_game_board[2][3] = 112;
     game_board[2][3] = 80;
     exp_game_board[1][2] = 32;
-    exp_game_board[2][3] = 112;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
@@ -1582,10 +1544,8 @@ CTEST(pawn_take, wrong_move_order)
             game_board[i][j] = exp_game_board[i][j] = 32;
         }
     }
-    game_board[1][2] = 112;
-    game_board[2][3] = 80;
-    exp_game_board[1][2] = 112;
-    exp_game_board[2][3] = 80;
+    game_board[1][2] = exp_game_board[1][2] = 112;
+    game_board[2][3] = exp_game_board[2][3] = 80;
     for (i = 0; i < move_count; i++) {
         for (j = 0; j < move_size; j++) {
             move_reader[i][j] = 0;
