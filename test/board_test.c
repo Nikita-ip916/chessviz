@@ -4,9 +4,8 @@
 CTEST(first_pawn_move, one_step_move_w1)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -35,9 +34,8 @@ CTEST(first_pawn_move, one_step_move_w1)
 CTEST(first_pawn_move, one_step_move_w2)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -66,9 +64,8 @@ CTEST(first_pawn_move, one_step_move_w2)
 CTEST(first_pawn_move, one_step_move_b1)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -97,9 +94,8 @@ CTEST(first_pawn_move, one_step_move_b1)
 CTEST(first_pawn_move, one_step_move_b2)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -128,9 +124,8 @@ CTEST(first_pawn_move, one_step_move_b2)
 CTEST(first_pawn_move, two_step_move_w1)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -159,9 +154,8 @@ CTEST(first_pawn_move, two_step_move_w1)
 CTEST(first_pawn_move, two_step_move_w2)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -190,9 +184,8 @@ CTEST(first_pawn_move, two_step_move_w2)
 CTEST(first_pawn_move, two_step_move_b1)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -221,9 +214,8 @@ CTEST(first_pawn_move, two_step_move_b1)
 CTEST(first_pawn_move, two_step_move_b2)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -252,9 +244,8 @@ CTEST(first_pawn_move, two_step_move_b2)
 CTEST(first_pawn_move, wrong_move1)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -281,9 +272,8 @@ CTEST(first_pawn_move, wrong_move1)
 CTEST(first_pawn_move, wrong_move2)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -310,9 +300,8 @@ CTEST(first_pawn_move, wrong_move2)
 CTEST(first_pawn_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -339,9 +328,8 @@ CTEST(first_pawn_move, wrong_move_order)
 CTEST(king_move, moveW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -377,9 +365,8 @@ CTEST(king_move, moveW)
 CTEST(king_move, moveB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -415,9 +402,8 @@ CTEST(king_move, moveB)
 CTEST(king_move, wrong_move_horiz)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -452,9 +438,8 @@ CTEST(king_move, wrong_move_horiz)
 CTEST(king_move, wrong_move_vert)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -489,9 +474,8 @@ CTEST(king_move, wrong_move_vert)
 CTEST(king_move, wrong_move_rules)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -526,9 +510,8 @@ CTEST(king_move, wrong_move_rules)
 CTEST(king_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -563,9 +546,8 @@ CTEST(king_move, wrong_move_order)
 CTEST(queen_move, move_diagW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -601,9 +583,8 @@ CTEST(queen_move, move_diagW)
 CTEST(queen_move, move_vertW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -639,9 +620,8 @@ CTEST(queen_move, move_vertW)
 CTEST(queen_move, move_horizW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -677,9 +657,8 @@ CTEST(queen_move, move_horizW)
 CTEST(queen_move, move_diagB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -715,9 +694,8 @@ CTEST(queen_move, move_diagB)
 CTEST(queen_move, move_vertB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -753,9 +731,8 @@ CTEST(queen_move, move_vertB)
 CTEST(queen_move, move_horizB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -791,9 +768,8 @@ CTEST(queen_move, move_horizB)
 CTEST(queen_move, wrong_move_vert)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -828,9 +804,8 @@ CTEST(queen_move, wrong_move_vert)
 CTEST(queen_move, wrong_move_horiz)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -865,9 +840,8 @@ CTEST(queen_move, wrong_move_horiz)
 CTEST(queen_move, wrong_move_rules)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -902,9 +876,8 @@ CTEST(queen_move, wrong_move_rules)
 CTEST(queen_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -939,9 +912,8 @@ CTEST(queen_move, wrong_move_order)
 CTEST(rook_move, move_vertW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -977,9 +949,8 @@ CTEST(rook_move, move_vertW)
 CTEST(rook_move, move_horizW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1015,9 +986,8 @@ CTEST(rook_move, move_horizW)
 CTEST(rook_move, move_vertB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1053,9 +1023,8 @@ CTEST(rook_move, move_vertB)
 CTEST(rook_move, move_horizB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1091,9 +1060,8 @@ CTEST(rook_move, move_horizB)
 CTEST(rook_move, wrong_move_rules)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1128,9 +1096,8 @@ CTEST(rook_move, wrong_move_rules)
 CTEST(rook_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1165,9 +1132,8 @@ CTEST(rook_move, wrong_move_order)
 CTEST(knight_move, move_2h1vW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1203,9 +1169,8 @@ CTEST(knight_move, move_2h1vW)
 CTEST(knight_move, move_1h2vW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1241,9 +1206,8 @@ CTEST(knight_move, move_1h2vW)
 CTEST(knight_move, move_2h1vB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1279,9 +1243,8 @@ CTEST(knight_move, move_2h1vB)
 CTEST(knight_move, move_1h2vB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1317,9 +1280,8 @@ CTEST(knight_move, move_1h2vB)
 CTEST(knight_move, wrong_move_rules)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1354,9 +1316,8 @@ CTEST(knight_move, wrong_move_rules)
 CTEST(knight_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1391,9 +1352,8 @@ CTEST(knight_move, wrong_move_order)
 CTEST(bishop_move, moveW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1429,9 +1389,8 @@ CTEST(bishop_move, moveW)
 CTEST(bishop_move, moveB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1467,9 +1426,8 @@ CTEST(bishop_move, moveB)
 CTEST(bishop_move, wrong_move_rules)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1504,9 +1462,8 @@ CTEST(bishop_move, wrong_move_rules)
 CTEST(bishop_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1541,9 +1498,8 @@ CTEST(bishop_move, wrong_move_order)
 CTEST(pawn_move, moveW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1579,9 +1535,8 @@ CTEST(pawn_move, moveW)
 CTEST(pawn_move, moveB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1617,9 +1572,8 @@ CTEST(pawn_move, moveB)
 CTEST(pawn_move, wrong_move_rules)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1654,9 +1608,8 @@ CTEST(pawn_move, wrong_move_rules)
 CTEST(pawn_move, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1691,9 +1644,8 @@ CTEST(pawn_move, wrong_move_order)
 CTEST(pawn_take, moveW)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1730,9 +1682,8 @@ CTEST(pawn_take, moveW)
 CTEST(pawn_take, moveB)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
@@ -1769,9 +1720,8 @@ CTEST(pawn_take, moveB)
 CTEST(pawn_take, wrong_move_order)
 {
     // Given
-    int i, j, board_size = 9, game_board[board_size][board_size],
-              move_count = 16, move_size = 40,
-              move_reader[move_count][move_size];
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
