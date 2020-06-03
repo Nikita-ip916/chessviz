@@ -177,7 +177,7 @@ CTEST(first_pawn_move, wrong_move_order)
         }
     }
 }
-CTEST(king_move, moveW)
+CTEST(king_move, move_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -214,7 +214,7 @@ CTEST(king_move, moveW)
         }
     }
 }
-CTEST(king_move, moveB)
+CTEST(king_move, move_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -395,7 +395,7 @@ CTEST(king_move, wrong_move_order)
         }
     }
 }
-CTEST(queen_move, move_diagW)
+CTEST(queen_move, move_diag_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -432,7 +432,7 @@ CTEST(queen_move, move_diagW)
         }
     }
 }
-CTEST(queen_move, move_vertW)
+CTEST(queen_move, move_vert_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -469,7 +469,7 @@ CTEST(queen_move, move_vertW)
         }
     }
 }
-CTEST(queen_move, move_horizW)
+CTEST(queen_move, move_horiz_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -506,7 +506,7 @@ CTEST(queen_move, move_horizW)
         }
     }
 }
-CTEST(queen_move, move_diagB)
+CTEST(queen_move, move_diag_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -543,7 +543,7 @@ CTEST(queen_move, move_diagB)
         }
     }
 }
-CTEST(queen_move, move_vertB)
+CTEST(queen_move, move_vert_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -580,7 +580,7 @@ CTEST(queen_move, move_vertB)
         }
     }
 }
-CTEST(queen_move, move_horizB)
+CTEST(queen_move, move_horiz_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -761,7 +761,7 @@ CTEST(queen_move, wrong_move_order)
         }
     }
 }
-CTEST(rook_move, move_vertW)
+CTEST(rook_move, move_vert_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -798,7 +798,7 @@ CTEST(rook_move, move_vertW)
         }
     }
 }
-CTEST(rook_move, move_horizW)
+CTEST(rook_move, move_horiz_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -835,7 +835,7 @@ CTEST(rook_move, move_horizW)
         }
     }
 }
-CTEST(rook_move, move_vertB)
+CTEST(rook_move, move_vert_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -872,7 +872,7 @@ CTEST(rook_move, move_vertB)
         }
     }
 }
-CTEST(rook_move, move_horizB)
+CTEST(rook_move, move_horiz_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -981,7 +981,7 @@ CTEST(rook_move, wrong_move_order)
         }
     }
 }
-CTEST(knight_move, move_2h1vW)
+CTEST(knight_move, move_2h1v_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1018,7 +1018,7 @@ CTEST(knight_move, move_2h1vW)
         }
     }
 }
-CTEST(knight_move, move_1h2vW)
+CTEST(knight_move, move_1h2v_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1055,7 +1055,7 @@ CTEST(knight_move, move_1h2vW)
         }
     }
 }
-CTEST(knight_move, move_2h1vB)
+CTEST(knight_move, move_2h1v_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1092,7 +1092,7 @@ CTEST(knight_move, move_2h1vB)
         }
     }
 }
-CTEST(knight_move, move_1h2vB)
+CTEST(knight_move, move_1h2v_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1201,7 +1201,7 @@ CTEST(knight_move, wrong_move_order)
         }
     }
 }
-CTEST(bishop_move, moveW)
+CTEST(bishop_move, move_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1238,7 +1238,7 @@ CTEST(bishop_move, moveW)
         }
     }
 }
-CTEST(bishop_move, moveB)
+CTEST(bishop_move, move_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1347,7 +1347,7 @@ CTEST(bishop_move, wrong_move_order)
         }
     }
 }
-CTEST(pawn_move, moveW)
+CTEST(pawn_move, move_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1384,7 +1384,7 @@ CTEST(pawn_move, moveW)
         }
     }
 }
-CTEST(pawn_move, moveB)
+CTEST(pawn_move, move_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1493,7 +1493,7 @@ CTEST(pawn_move, wrong_move_order)
         }
     }
 }
-CTEST(pawn_take, moveW)
+CTEST(pawn_take, move_w)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
@@ -1531,7 +1531,7 @@ CTEST(pawn_take, moveW)
         }
     }
 }
-CTEST(pawn_take, moveB)
+CTEST(pawn_take, move_b)
 {
     // Given
     int i, j, board_size = 9, game_board[board_size][board_size];
