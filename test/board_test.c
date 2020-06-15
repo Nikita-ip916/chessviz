@@ -11,17 +11,12 @@ CTEST(first_pawn_move, one_step_move_w)
     FillBoard(board_size, exp_game_board);
     exp_game_board[6][1] = ' ';
     exp_game_board[5][1] = 'P';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
-    move_reader[i][0] = 'a';
+    move_reader[i][0] = move_reader[i][3] = 'a';
     move_reader[i][1] = '2';
     move_reader[i][2] = '-';
-    move_reader[i][3] = 'a';
     move_reader[i][4] = '3';
+    move_reader[i][5] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -41,17 +36,12 @@ CTEST(first_pawn_move, one_step_move_b)
     FillBoard(board_size, exp_game_board);
     exp_game_board[1][1] = ' ';
     exp_game_board[2][1] = 'p';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
-    move_reader[i][0] = 'a';
+    move_reader[i][0] = move_reader[i][3] = 'a';
     move_reader[i][1] = '7';
     move_reader[i][2] = '-';
-    move_reader[i][3] = 'a';
     move_reader[i][4] = '6';
+    move_reader[i][5] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -71,17 +61,12 @@ CTEST(first_pawn_move, two_step_move_w)
     FillBoard(board_size, exp_game_board);
     exp_game_board[6][1] = ' ';
     exp_game_board[4][1] = 'P';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
-    move_reader[i][0] = 'a';
+    move_reader[i][0] = move_reader[i][3] = 'a';
     move_reader[i][1] = '2';
     move_reader[i][2] = '-';
-    move_reader[i][3] = 'a';
     move_reader[i][4] = '4';
+    move_reader[i][5] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -101,17 +86,12 @@ CTEST(first_pawn_move, two_step_move_b)
     FillBoard(board_size, exp_game_board);
     exp_game_board[1][1] = ' ';
     exp_game_board[3][1] = 'p';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
-    move_reader[i][0] = 'a';
+    move_reader[i][0] = move_reader[i][3] = 'a';
     move_reader[i][1] = '7';
     move_reader[i][2] = '-';
-    move_reader[i][3] = 'a';
     move_reader[i][4] = '5';
+    move_reader[i][5] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -129,17 +109,12 @@ CTEST(first_pawn_move, wrong_move_order)
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
-    move_reader[i][0] = 'h';
+    move_reader[i][0] = move_reader[i][3] = 'h';
     move_reader[i][1] = '7';
     move_reader[i][2] = '-';
-    move_reader[i][3] = 'h';
     move_reader[i][4] = '5';
+    move_reader[i][5] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -164,18 +139,13 @@ CTEST(king_move, move_w)
     }
     game_board[6][2] = exp_game_board[5][2] = 'K';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'K';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -200,11 +170,6 @@ CTEST(king_move, move_b)
     }
     game_board[6][2] = exp_game_board[5][3] = 'k';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'K';
     move_reader[i][1] = 'b';
@@ -212,6 +177,7 @@ CTEST(king_move, move_b)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'c';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -235,11 +201,6 @@ CTEST(king_move, wrong_move_rules)
         }
     }
     game_board[4][5] = exp_game_board[4][5] = 'K';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'K';
     move_reader[i][1] = 'e';
@@ -247,6 +208,7 @@ CTEST(king_move, wrong_move_rules)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'f';
     move_reader[i][5] = '2';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -270,18 +232,13 @@ CTEST(king_move, wrong_move_order)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'K';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'K';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -306,11 +263,6 @@ CTEST(queen_move, move_diag_w)
     }
     game_board[6][2] = exp_game_board[4][4] = 'Q';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'Q';
     move_reader[i][1] = 'b';
@@ -318,6 +270,7 @@ CTEST(queen_move, move_diag_w)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -342,18 +295,13 @@ CTEST(queen_move, move_vert_w)
     }
     game_board[4][5] = exp_game_board[0][5] = 'Q';
     exp_game_board[4][5] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'Q';
-    move_reader[i][1] = 'e';
+    move_reader[i][1] = move_reader[i][4] = 'e';
     move_reader[i][2] = '4';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'e';
     move_reader[i][5] = '8';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -378,18 +326,13 @@ CTEST(queen_move, move_horiz_w)
     }
     game_board[4][5] = exp_game_board[4][1] = 'Q';
     exp_game_board[4][5] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'Q';
     move_reader[i][1] = 'e';
-    move_reader[i][2] = '4';
+    move_reader[i][2] = move_reader[i][5] = '4';
     move_reader[i][3] = '-';
     move_reader[i][4] = 'a';
-    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -414,11 +357,6 @@ CTEST(queen_move, move_diag_b)
     }
     game_board[6][2] = exp_game_board[4][4] = 'q';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'Q';
     move_reader[i][1] = 'b';
@@ -426,6 +364,7 @@ CTEST(queen_move, move_diag_b)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -450,18 +389,13 @@ CTEST(queen_move, move_vert_b)
     }
     game_board[4][5] = exp_game_board[0][5] = 'q';
     exp_game_board[4][5] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'Q';
-    move_reader[i][1] = 'e';
+    move_reader[i][1] = move_reader[i][4] = 'e';
     move_reader[i][2] = '4';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'e';
     move_reader[i][5] = '8';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -486,18 +420,13 @@ CTEST(queen_move, move_horiz_b)
     }
     game_board[4][5] = exp_game_board[4][1] = 'q';
     exp_game_board[4][5] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'Q';
     move_reader[i][1] = 'e';
-    move_reader[i][2] = '4';
+    move_reader[i][2] = move_reader[i][5] = '4';
     move_reader[i][3] = '-';
     move_reader[i][4] = 'a';
-    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -521,11 +450,6 @@ CTEST(queen_move, wrong_move_rules)
         }
     }
     game_board[4][5] = exp_game_board[4][5] = 'Q';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'Q';
     move_reader[i][1] = 'e';
@@ -533,6 +457,7 @@ CTEST(queen_move, wrong_move_rules)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'c';
     move_reader[i][5] = '5';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -556,18 +481,13 @@ CTEST(queen_move, wrong_move_order)
         }
     }
     game_board[4][5] = exp_game_board[4][5] = 'q';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'Q';
     move_reader[i][1] = 'e';
-    move_reader[i][2] = '4';
+    move_reader[i][2] = move_reader[i][5] = '4';
     move_reader[i][3] = '-';
     move_reader[i][4] = 'a';
-    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -592,18 +512,13 @@ CTEST(rook_move, move_vert_w)
     }
     game_board[6][2] = exp_game_board[2][2] = 'R';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'R';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -628,18 +543,13 @@ CTEST(rook_move, move_horiz_w)
     }
     game_board[6][2] = exp_game_board[6][6] = 'R';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 2;
     move_reader[i][0] = 'R';
     move_reader[i][1] = 'b';
-    move_reader[i][2] = '2';
+    move_reader[i][2] = move_reader[i][5] = '2';
     move_reader[i][3] = '-';
     move_reader[i][4] = 'f';
-    move_reader[i][5] = '2';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -664,18 +574,13 @@ CTEST(rook_move, move_vert_b)
     }
     game_board[6][2] = exp_game_board[2][2] = 'r';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'R';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -700,18 +605,13 @@ CTEST(rook_move, move_horiz_b)
     }
     game_board[6][2] = exp_game_board[6][6] = 'r';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 3;
     move_reader[i][0] = 'R';
     move_reader[i][1] = 'b';
-    move_reader[i][2] = '2';
+    move_reader[i][2] = move_reader[i][5] = '2';
     move_reader[i][3] = '-';
     move_reader[i][4] = 'f';
-    move_reader[i][5] = '2';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -735,11 +635,6 @@ CTEST(rook_move, wrong_move_rules)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'r';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'R';
     move_reader[i][1] = 'b';
@@ -747,6 +642,7 @@ CTEST(rook_move, wrong_move_rules)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'f';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -770,18 +666,13 @@ CTEST(rook_move, wrong_move_order)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'R';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 3;
     move_reader[i][0] = 'R';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -806,11 +697,6 @@ CTEST(knight_move, move_2h1v_w)
     }
     game_board[6][2] = exp_game_board[5][4] = 'N';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'N';
     move_reader[i][1] = 'b';
@@ -818,6 +704,7 @@ CTEST(knight_move, move_2h1v_w)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -842,11 +729,6 @@ CTEST(knight_move, move_1h2v_w)
     }
     game_board[6][2] = exp_game_board[4][1] = 'N';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 2;
     move_reader[i][0] = 'N';
     move_reader[i][1] = 'b';
@@ -854,6 +736,7 @@ CTEST(knight_move, move_1h2v_w)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'a';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -878,11 +761,6 @@ CTEST(knight_move, move_2h1v_b)
     }
     game_board[6][2] = exp_game_board[5][4] = 'n';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'N';
     move_reader[i][1] = 'b';
@@ -890,6 +768,7 @@ CTEST(knight_move, move_2h1v_b)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -914,11 +793,6 @@ CTEST(knight_move, move_1h2v_b)
     }
     game_board[6][2] = exp_game_board[4][1] = 'n';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 3;
     move_reader[i][0] = 'N';
     move_reader[i][1] = 'b';
@@ -926,6 +800,7 @@ CTEST(knight_move, move_1h2v_b)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'a';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -949,11 +824,6 @@ CTEST(knight_move, wrong_move_rules)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'N';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'N';
     move_reader[i][1] = 'b';
@@ -961,6 +831,7 @@ CTEST(knight_move, wrong_move_rules)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'e';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -984,11 +855,6 @@ CTEST(knight_move, wrong_move_order)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'N';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 3;
     move_reader[i][0] = 'N';
     move_reader[i][1] = 'b';
@@ -996,6 +862,7 @@ CTEST(knight_move, wrong_move_order)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'a';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1020,11 +887,6 @@ CTEST(bishop_move, move_w)
     }
     game_board[6][2] = exp_game_board[4][4] = 'B';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'B';
     move_reader[i][1] = 'b';
@@ -1032,6 +894,7 @@ CTEST(bishop_move, move_w)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1056,11 +919,6 @@ CTEST(bishop_move, move_b)
     }
     game_board[6][2] = exp_game_board[4][4] = 'b';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'B';
     move_reader[i][1] = 'b';
@@ -1068,6 +926,7 @@ CTEST(bishop_move, move_b)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1091,11 +950,6 @@ CTEST(bishop_move, wrong_move_rules)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'B';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 2;
     move_reader[i][0] = 'B';
     move_reader[i][1] = 'b';
@@ -1103,6 +957,7 @@ CTEST(bishop_move, wrong_move_rules)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'e';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1126,11 +981,6 @@ CTEST(bishop_move, wrong_move_order)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'b';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 2;
     move_reader[i][0] = 'B';
     move_reader[i][1] = 'b';
@@ -1138,6 +988,7 @@ CTEST(bishop_move, wrong_move_order)
     move_reader[i][3] = '-';
     move_reader[i][4] = 'd';
     move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1162,18 +1013,13 @@ CTEST(pawn_move, move_w)
     }
     game_board[6][2] = exp_game_board[5][2] = 'P';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'P';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1198,18 +1044,13 @@ CTEST(pawn_move, move_b)
     }
     game_board[1][2] = exp_game_board[2][2] = 'p';
     exp_game_board[1][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'P';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '7';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1233,18 +1074,13 @@ CTEST(pawn_move, wrong_move_rules)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'P';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'P';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '5';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1268,18 +1104,13 @@ CTEST(pawn_move, wrong_move_order)
         }
     }
     game_board[1][2] = exp_game_board[1][2] = 'p';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 2;
     move_reader[i][0] = 'P';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '7';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1305,11 +1136,6 @@ CTEST(pawn_take, move_w)
     game_board[6][2] = exp_game_board[5][3] = 'P';
     game_board[5][3] = 'p';
     exp_game_board[6][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'P';
     move_reader[i][1] = 'b';
@@ -1317,6 +1143,7 @@ CTEST(pawn_take, move_w)
     move_reader[i][3] = 'x';
     move_reader[i][4] = 'c';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1342,11 +1169,6 @@ CTEST(pawn_take, move_b)
     game_board[1][2] = exp_game_board[2][3] = 'p';
     game_board[2][3] = 'P';
     exp_game_board[1][2] = ' ';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
     move_reader[i][0] = 'P';
     move_reader[i][1] = 'b';
@@ -1354,6 +1176,7 @@ CTEST(pawn_take, move_b)
     move_reader[i][3] = 'x';
     move_reader[i][4] = 'c';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1378,11 +1201,6 @@ CTEST(pawn_take, wrong_move_order)
     }
     game_board[1][2] = exp_game_board[1][2] = 'p';
     game_board[2][3] = exp_game_board[2][3] = 'P';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'P';
     move_reader[i][1] = 'b';
@@ -1390,6 +1208,7 @@ CTEST(pawn_take, wrong_move_order)
     move_reader[i][3] = 'x';
     move_reader[i][4] = 'c';
     move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1413,18 +1232,13 @@ CTEST(wrong_move, invalid_figure)
         }
     }
     game_board[6][2] = exp_game_board[6][2] = 'F';
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 0;
     move_reader[i][0] = 'F';
-    move_reader[i][1] = 'b';
+    move_reader[i][1] = move_reader[i][4] = 'b';
     move_reader[i][2] = '2';
     move_reader[i][3] = '-';
-    move_reader[i][4] = 'b';
     move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
@@ -1442,17 +1256,12 @@ CTEST(wrong_move, invalid_enter)
     int exp_game_board[board_size][board_size];
     FillBoard(board_size, game_board);
     FillBoard(board_size, exp_game_board);
-    for (i = 0; i < move_count; i++) {
-        for (j = 0; j < move_size; j++) {
-            move_reader[i][j] = 0;
-        }
-    }
     i = 1;
-    move_reader[i][0] = 'i';
+    move_reader[i][0] = move_reader[i][3] = 'd';
     move_reader[i][1] = '7';
     move_reader[i][2] = '-';
-    move_reader[i][3] = 'i';
     move_reader[i][4] = '5';
+    move_reader[i][5] = 1;
     // When
     Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
