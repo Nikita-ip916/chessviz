@@ -11,14 +11,13 @@ void Board(
 {
     if (move_reader[i][2] == '-' && move_reader[i][0] >= 'a'
         && move_reader[i][0] <= 'h' && move_reader[i][0] == move_reader[i][3]
-        && move_reader[i][5] == 0) { // 3el "-"; 1el=4el "a"-"h"; 6el empty
+        && move_reader[i][5] == 0) {
         if (i % 2 == 0 && move_reader[i][1] == '2'
             && (move_reader[i][4] == '3' || move_reader[i][4] == '4')
             && game_board['8' - move_reader[i][1]][move_reader[i][0] - '`']
                     == 'P'
             && game_board['8' - move_reader[i][4]][move_reader[i][3] - '`']
-                    == ' ') { // m.white; 2el "2"; 5el "3"or"4"; aTake="p";
-                              // aPut=" "
+                    == ' ') {
             printf("\nRight %d first move of white pawn\n", i + 1);
             game_board['8' - move_reader[i][1]][move_reader[i][0] - '`'] = ' ';
             game_board['8' - move_reader[i][4]][move_reader[i][3] - '`'] = 'P';
@@ -28,8 +27,7 @@ void Board(
                 && game_board['8' - move_reader[i][1]][move_reader[i][0] - '`']
                         == 'p'
                 && game_board['8' - move_reader[i][4]][move_reader[i][3] - '`']
-                        == ' ') { // m.black; 2el "7"; 5el "6"or"5";
-                                  // aTake="p"; aPut=" "
+                        == ' ') {
             printf("\nRight %d first move of black pawn\n", i + 1);
             game_board['8' - move_reader[i][1]][move_reader[i][0] - '`'] = ' ';
             game_board['8' - move_reader[i][4]][move_reader[i][3] - '`'] = 'p';
