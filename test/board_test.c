@@ -1,1707 +1,1273 @@
 #include <board.h>
 #include <board_fill_plain.h>
 #include <ctest.h>
-CTEST(first_pawn_move, one_step_move_w1)
+CTEST(first_pawn_move, one_step_move_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[6][1] = 32;
-    exp[5][1] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[0][0] = 97;
-    b[0][1] = 50;
-    b[0][2] = 45;
-    b[0][3] = 97;
-    b[0][4] = 51;
-    // When
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    exp_game_board[6][1] = ' ';
+    exp_game_board[5][1] = 'P';
     i = 0;
-    Board(n, n, a, m, k, b, i);
+    move_reader[i][0] = move_reader[i][3] = 'a';
+    move_reader[i][1] = '2';
+    move_reader[i][2] = '-';
+    move_reader[i][4] = '3';
+    move_reader[i][5] = 0;
+    // When
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(first_pawn_move, one_step_move_w2)
+CTEST(first_pawn_move, one_step_move_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[6][8] = 32;
-    exp[5][8] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    exp_game_board[1][1] = ' ';
+    exp_game_board[2][1] = 'p';
+    i = 1;
+    move_reader[i][0] = move_reader[i][3] = 'a';
+    move_reader[i][1] = '7';
+    move_reader[i][2] = '-';
+    move_reader[i][4] = '6';
+    move_reader[i][5] = 0;
+    // When
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
+    // Then
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
-    b[0][0] = 104;
-    b[0][1] = 50;
-    b[0][2] = 45;
-    b[0][3] = 104;
-    b[0][4] = 51;
-    // When
+}
+CTEST(first_pawn_move, two_step_move_w)
+{
+    // Given
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    exp_game_board[6][1] = ' ';
+    exp_game_board[4][1] = 'P';
     i = 0;
-    Board(n, n, a, m, k, b, i);
+    move_reader[i][0] = move_reader[i][3] = 'a';
+    move_reader[i][1] = '2';
+    move_reader[i][2] = '-';
+    move_reader[i][4] = '4';
+    move_reader[i][5] = 0;
+    // When
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(first_pawn_move, one_step_move_b1)
+CTEST(first_pawn_move, two_step_move_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[1][1] = 32;
-    exp[2][1] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[1][0] = 97;
-    b[1][1] = 55;
-    b[1][2] = 45;
-    b[1][3] = 97;
-    b[1][4] = 54;
-    // When
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    exp_game_board[1][1] = ' ';
+    exp_game_board[3][1] = 'p';
     i = 1;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, one_step_move_b2)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[1][8] = 32;
-    exp[2][8] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[1][0] = 104;
-    b[1][1] = 55;
-    b[1][2] = 45;
-    b[1][3] = 104;
-    b[1][4] = 54;
+    move_reader[i][0] = move_reader[i][3] = 'a';
+    move_reader[i][1] = '7';
+    move_reader[i][2] = '-';
+    move_reader[i][4] = '5';
+    move_reader[i][5] = 0;
     // When
-    i = 1;
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, two_step_move_w1)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[6][1] = 32;
-    exp[4][1] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[0][0] = 97;
-    b[0][1] = 50;
-    b[0][2] = 45;
-    b[0][3] = 97;
-    b[0][4] = 52;
-    // When
-    i = 0;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, two_step_move_w2)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[6][8] = 32;
-    exp[4][8] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[0][0] = 104;
-    b[0][1] = 50;
-    b[0][2] = 45;
-    b[0][3] = 104;
-    b[0][4] = 52;
-    // When
-    i = 0;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, two_step_move_b1)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[1][1] = 32;
-    exp[3][1] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[1][0] = 97;
-    b[1][1] = 55;
-    b[1][2] = 45;
-    b[1][3] = 97;
-    b[1][4] = 53;
-    // When
-    i = 1;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, two_step_move_b2)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    exp[1][8] = 32;
-    exp[3][8] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[1][0] = 104;
-    b[1][1] = 55;
-    b[1][2] = 45;
-    b[1][3] = 104;
-    b[1][4] = 53;
-    // When
-    i = 1;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, wrong_move1)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[1][0] = 105;
-    b[1][1] = 55;
-    b[1][2] = 45;
-    b[1][3] = 105;
-    b[1][4] = 53;
-    // When
-    i = 1;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(first_pawn_move, wrong_move2)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    b[1][0] = 96;
-    b[1][1] = 55;
-    b[1][2] = 45;
-    b[1][3] = 96;
-    b[1][4] = 53;
-    // When
-    i = 1;
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(first_pawn_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
     i = 0;
-    b[i][0] = 104;
-    b[i][1] = 55;
-    b[i][2] = 45;
-    b[i][3] = 104;
-    b[i][4] = 53;
+    move_reader[i][0] = move_reader[i][3] = 'h';
+    move_reader[i][1] = '7';
+    move_reader[i][2] = '-';
+    move_reader[i][4] = '5';
+    move_reader[i][5] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(king_move, moveW)
+CTEST(king_move, move_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 75;
-    exp[6][2] = 32;
-    exp[5][2] = 75;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[5][2] = 'K';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 75;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 51;
+    move_reader[i][0] = 'K';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(king_move, moveB)
+CTEST(king_move, move_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 107;
-    exp[6][2] = 32;
-    exp[5][3] = 107;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[5][3] = 'k';
+    exp_game_board[6][2] = ' ';
     i = 1;
-    b[i][0] = 75;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 99;
-    b[i][5] = 51;
+    move_reader[i][0] = 'K';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'c';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(king_move, wrong_move_horiz)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
-        }
-    }
-    a[4][1] = 75;
-    exp[4][1] = 75;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    i = 0;
-    b[i][0] = 75;
-    b[i][1] = 97;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 96;
-    b[i][5] = 52;
-    // When
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(king_move, wrong_move_vert)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
-        }
-    }
-    a[0][4] = 107;
-    exp[0][4] = 107;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    i = 1;
-    b[i][0] = 75;
-    b[i][1] = 100;
-    b[i][2] = 56;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 57;
-    // When
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(king_move, wrong_move_rules)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 75;
-    exp[4][5] = 75;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[4][5] = 'K';
     i = 0;
-    b[i][0] = 75;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 102;
-    b[i][5] = 50;
+    move_reader[i][0] = 'K';
+    move_reader[i][1] = 'e';
+    move_reader[i][2] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'f';
+    move_reader[i][5] = '2';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(king_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 75;
-    exp[6][2] = 75;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'K';
     i = 1;
-    b[i][0] = 75;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 51;
+    move_reader[i][0] = 'K';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(queen_move, move_diagW)
+CTEST(queen_move, move_diag_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 81;
-    exp[6][2] = 32;
-    exp[4][4] = 81;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[4][4] = 'Q';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 81;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 52;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(queen_move, move_vertW)
+CTEST(queen_move, move_vert_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 81;
-    exp[4][5] = 32;
-    exp[0][5] = 81;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[0][5] = 'Q';
+    exp_game_board[4][5] = ' ';
     i = 0;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 101;
-    b[i][5] = 56;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = move_reader[i][4] = 'e';
+    move_reader[i][2] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '8';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(queen_move, move_horizW)
+CTEST(queen_move, move_horiz_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 81;
-    exp[4][5] = 32;
-    exp[4][1] = 81;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[4][1] = 'Q';
+    exp_game_board[4][5] = ' ';
     i = 0;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 97;
-    b[i][5] = 52;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = 'e';
+    move_reader[i][2] = move_reader[i][5] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'a';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(queen_move, move_diagB)
+CTEST(queen_move, move_diag_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 113;
-    exp[6][2] = 32;
-    exp[4][4] = 113;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[4][4] = 'q';
+    exp_game_board[6][2] = ' ';
     i = 1;
-    b[i][0] = 81;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 52;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(queen_move, move_vertB)
+CTEST(queen_move, move_vert_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 113;
-    exp[4][5] = 32;
-    exp[0][5] = 113;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[0][5] = 'q';
+    exp_game_board[4][5] = ' ';
     i = 1;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 101;
-    b[i][5] = 56;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = move_reader[i][4] = 'e';
+    move_reader[i][2] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '8';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(queen_move, move_horizB)
+CTEST(queen_move, move_horiz_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 113;
-    exp[4][5] = 32;
-    exp[4][1] = 113;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[4][1] = 'q';
+    exp_game_board[4][5] = ' ';
     i = 1;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 97;
-    b[i][5] = 52;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = 'e';
+    move_reader[i][2] = move_reader[i][5] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'a';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(queen_move, wrong_move_vert)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
-        }
-    }
-    a[4][5] = 81;
-    exp[4][5] = 81;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    i = 0;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 101;
-    b[i][5] = 48;
-    // When
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
-        }
-    }
-}
-CTEST(queen_move, wrong_move_horiz)
-{
-    // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
-        }
-    }
-    a[4][5] = 113;
-    exp[4][5] = 113;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
-    i = 1;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 105;
-    b[i][5] = 52;
-    // When
-    Board(n, n, a, m, k, b, i);
-    // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(queen_move, wrong_move_rules)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 81;
-    exp[4][5] = 81;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[4][5] = 'Q';
     i = 0;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 99;
-    b[i][5] = 53;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = 'e';
+    move_reader[i][2] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'c';
+    move_reader[i][5] = '5';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(queen_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[4][5] = 113;
-    exp[4][5] = 113;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[4][5] = exp_game_board[4][5] = 'q';
     i = 0;
-    b[i][0] = 81;
-    b[i][1] = 101;
-    b[i][2] = 52;
-    b[i][3] = 45;
-    b[i][4] = 97;
-    b[i][5] = 52;
+    move_reader[i][0] = 'Q';
+    move_reader[i][1] = 'e';
+    move_reader[i][2] = move_reader[i][5] = '4';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'a';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(rook_move, move_vertW)
+CTEST(rook_move, move_vert_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 82;
-    exp[6][2] = 32;
-    exp[2][2] = 82;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[2][2] = 'R';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 82;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 54;
+    move_reader[i][0] = 'R';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(rook_move, move_horizW)
+CTEST(rook_move, move_horiz_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 82;
-    exp[6][2] = 32;
-    exp[6][6] = 82;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][6] = 'R';
+    exp_game_board[6][2] = ' ';
     i = 2;
-    b[i][0] = 82;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 102;
-    b[i][5] = 50;
+    move_reader[i][0] = 'R';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = move_reader[i][5] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'f';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(rook_move, move_vertB)
+CTEST(rook_move, move_vert_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 114;
-    exp[6][2] = 32;
-    exp[2][2] = 114;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[2][2] = 'r';
+    exp_game_board[6][2] = ' ';
     i = 1;
-    b[i][0] = 82;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 54;
+    move_reader[i][0] = 'R';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(rook_move, move_horizB)
+CTEST(rook_move, move_horiz_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 114;
-    exp[6][2] = 32;
-    exp[6][6] = 114;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][6] = 'r';
+    exp_game_board[6][2] = ' ';
     i = 3;
-    b[i][0] = 82;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 102;
-    b[i][5] = 50;
+    move_reader[i][0] = 'R';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = move_reader[i][5] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'f';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(rook_move, wrong_move_rules)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 114;
-    exp[6][2] = 114;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'r';
     i = 0;
-    b[i][0] = 82;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 102;
-    b[i][5] = 52;
+    move_reader[i][0] = 'R';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'f';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(rook_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 82;
-    exp[6][2] = 82;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'R';
     i = 3;
-    b[i][0] = 82;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 54;
+    move_reader[i][0] = 'R';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(knight_move, move_2h1vW)
+CTEST(knight_move, move_2h1v_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 78;
-    exp[6][2] = 32;
-    exp[5][4] = 78;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[5][4] = 'N';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 78;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 51;
+    move_reader[i][0] = 'N';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(knight_move, move_1h2vW)
+CTEST(knight_move, move_1h2v_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 78;
-    exp[6][2] = 32;
-    exp[4][1] = 78;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[4][1] = 'N';
+    exp_game_board[6][2] = ' ';
     i = 2;
-    b[i][0] = 78;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 97;
-    b[i][5] = 52;
+    move_reader[i][0] = 'N';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'a';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(knight_move, move_2h1vB)
+CTEST(knight_move, move_2h1v_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 110;
-    exp[6][2] = 32;
-    exp[5][4] = 110;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[5][4] = 'n';
+    exp_game_board[6][2] = ' ';
     i = 1;
-    b[i][0] = 78;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 51;
+    move_reader[i][0] = 'N';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(knight_move, move_1h2vB)
+CTEST(knight_move, move_1h2v_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 110;
-    exp[6][2] = 32;
-    exp[4][1] = 110;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[4][1] = 'n';
+    exp_game_board[6][2] = ' ';
     i = 3;
-    b[i][0] = 78;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 97;
-    b[i][5] = 52;
+    move_reader[i][0] = 'N';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'a';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(knight_move, wrong_move_rules)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 78;
-    exp[6][2] = 78;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'N';
     i = 0;
-    b[i][0] = 78;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 101;
-    b[i][5] = 51;
+    move_reader[i][0] = 'N';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'e';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(knight_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 78;
-    exp[6][2] = 78;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'N';
     i = 3;
-    b[i][0] = 78;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 97;
-    b[i][5] = 52;
+    move_reader[i][0] = 'N';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'a';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(bishop_move, moveW)
+CTEST(bishop_move, move_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 66;
-    exp[6][2] = 32;
-    exp[4][4] = 66;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[4][4] = 'B';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 66;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 52;
+    move_reader[i][0] = 'B';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(bishop_move, moveB)
+CTEST(bishop_move, move_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 98;
-    exp[6][2] = 32;
-    exp[4][4] = 98;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[4][4] = 'b';
+    exp_game_board[6][2] = ' ';
     i = 1;
-    b[i][0] = 66;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 52;
+    move_reader[i][0] = 'B';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(bishop_move, wrong_move_rules)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 66;
-    exp[6][2] = 66;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'B';
     i = 2;
-    b[i][0] = 66;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 101;
-    b[i][5] = 52;
+    move_reader[i][0] = 'B';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'e';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(bishop_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 98;
-    exp[6][2] = 98;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'b';
     i = 2;
-    b[i][0] = 66;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 100;
-    b[i][5] = 52;
+    move_reader[i][0] = 'B';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][4] = 'd';
+    move_reader[i][5] = '4';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(pawn_move, moveW)
+CTEST(pawn_move, move_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 80;
-    exp[6][2] = 32;
-    exp[5][2] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[5][2] = 'P';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 51;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(pawn_move, moveB)
+CTEST(pawn_move, move_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[1][2] = 112;
-    exp[1][2] = 32;
-    exp[2][2] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[1][2] = exp_game_board[2][2] = 'p';
+    exp_game_board[1][2] = ' ';
     i = 1;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 55;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 54;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '7';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(pawn_move, wrong_move_rules)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 80;
-    exp[6][2] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[6][2] = 'P';
     i = 0;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 53;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '5';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(pawn_move, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[1][2] = 112;
-    exp[1][2] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[1][2] = exp_game_board[1][2] = 'p';
     i = 2;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 55;
-    b[i][3] = 45;
-    b[i][4] = 98;
-    b[i][5] = 54;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '7';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(pawn_take, moveW)
+CTEST(pawn_take, move_w)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[6][2] = 80;
-    a[5][3] = 112;
-    exp[6][2] = 32;
-    exp[5][3] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[6][2] = exp_game_board[5][3] = 'P';
+    game_board[5][3] = 'p';
+    exp_game_board[6][2] = ' ';
     i = 0;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 50;
-    b[i][3] = 120;
-    b[i][4] = 99;
-    b[i][5] = 51;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = 'x';
+    move_reader[i][4] = 'c';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
-CTEST(pawn_take, moveB)
+CTEST(pawn_take, move_b)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[1][2] = 112;
-    a[2][3] = 80;
-    exp[1][2] = 32;
-    exp[2][3] = 112;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[1][2] = exp_game_board[2][3] = 'p';
+    game_board[2][3] = 'P';
+    exp_game_board[1][2] = ' ';
     i = 1;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 55;
-    b[i][3] = 120;
-    b[i][4] = 99;
-    b[i][5] = 54;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '7';
+    move_reader[i][3] = 'x';
+    move_reader[i][4] = 'c';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }
 CTEST(pawn_take, wrong_move_order)
 {
     // Given
-    int i, j, n = 9, a[n][n], m = 16, k = 40, b[m][k];
-    int exp[n][n];
-    FillBoard(n, n, a);
-    FillBoard(n, n, exp);
-    for (i = 0; i < n - 1; i++) {
-        for (j = 1; j < n; j++) {
-            a[i][j] = exp[i][j] = 32;
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
         }
     }
-    a[1][2] = 112;
-    a[2][3] = 80;
-    exp[1][2] = 112;
-    exp[2][3] = 80;
-    for (i = 0; i < m; i++) {
-        for (j = 0; j < k; j++) {
-            b[i][j] = 0;
-        }
-    }
+    game_board[1][2] = exp_game_board[1][2] = 'p';
+    game_board[2][3] = exp_game_board[2][3] = 'P';
     i = 0;
-    b[i][0] = 80;
-    b[i][1] = 98;
-    b[i][2] = 55;
-    b[i][3] = 120;
-    b[i][4] = 99;
-    b[i][5] = 54;
+    move_reader[i][0] = 'P';
+    move_reader[i][1] = 'b';
+    move_reader[i][2] = '7';
+    move_reader[i][3] = 'x';
+    move_reader[i][4] = 'c';
+    move_reader[i][5] = '6';
+    move_reader[i][6] = 0;
     // When
-    Board(n, n, a, m, k, b, i);
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
     // Then
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            ASSERT_EQUAL(exp[i][j], a[i][j]);
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
+        }
+    }
+}
+CTEST(wrong_move, invalid_figure)
+{
+    // Given
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    for (i = 0; i < board_size - 1; i++) {
+        for (j = 1; j < board_size; j++) {
+            game_board[i][j] = exp_game_board[i][j] = ' ';
+        }
+    }
+    game_board[6][2] = exp_game_board[6][2] = 'F';
+    i = 0;
+    move_reader[i][0] = 'F';
+    move_reader[i][1] = move_reader[i][4] = 'b';
+    move_reader[i][2] = '2';
+    move_reader[i][3] = '-';
+    move_reader[i][5] = '3';
+    move_reader[i][6] = 0;
+    // When
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
+    // Then
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
+        }
+    }
+}
+CTEST(wrong_move, invalid_enter)
+{
+    // Given
+    int i, j, board_size = 9, game_board[board_size][board_size];
+    int move_count = 16, move_size = 40, move_reader[move_count][move_size];
+    int exp_game_board[board_size][board_size];
+    FillBoard(board_size, game_board);
+    FillBoard(board_size, exp_game_board);
+    i = 1;
+    move_reader[i][0] = move_reader[i][3] = 'd';
+    move_reader[i][1] = '7';
+    move_reader[i][2] = '-';
+    move_reader[i][4] = '5';
+    move_reader[i][5] = 1;
+    // When
+    Board(board_size, game_board, move_count, move_size, move_reader, i);
+    // Then
+    for (i = 0; i < board_size; i++) {
+        for (j = 0; j < board_size; j++) {
+            ASSERT_EQUAL(exp_game_board[i][j], game_board[i][j]);
         }
     }
 }

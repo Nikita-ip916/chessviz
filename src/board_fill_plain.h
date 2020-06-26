@@ -1,4 +1,4 @@
 #ifndef BOARD_FILL_PLAIN_H
 #define BOARD_FILL_PLAIN_H
-void FillBoard(int n, int m, int a[][m]);
+void FillBoard(int board_size, int game_board[][board_size]);
 #endif

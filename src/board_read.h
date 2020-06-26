@@ -1,4 +1,4 @@
 #ifndef BOARD_READ_H
 #define BOARD_READ_H
-void ReadBoard(int n, int m, int b[][m]);
+void ReadBoard(int move_count, int move_size, int move_reader[][move_size]);
 #endif

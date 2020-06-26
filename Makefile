@@ -1,26 +1,43 @@
 CC = gcc
-CFLAGS = -Wall -Werror -c
+CFLAGS = -Wall -Werror
 OUT = chessviz
-DIR = build
-DIR2 = bin
-DIR3 = src
-DIR4 = test
-PRT = -I src -I thirdparty
-F = -o
-.PHONY: all prog clean test
-all: prog
-prog:
-		$(CC) $(F) $(DIR)/$(DIR3)/main.o $(CFLAGS) $(DIR3)/main.c
-		$(CC) $(F) $(DIR)/$(DIR3)/board_fill_plain.o $(CFLAGS) $(DIR3)/board_fill_plain.c
-		$(CC) $(F) $(DIR)/$(DIR3)/board_print_plain.o $(CFLAGS) $(DIR3)/board_print_plain.c
-		$(CC) $(F) $(DIR)/$(DIR3)/board_read.o $(CFLAGS) $(DIR3)/board_read.c
-		$(CC) $(F) $(DIR)/$(DIR3)/board.o $(CFLAGS) $(DIR3)/board.c
-		$(CC) $(DIR)/$(DIR3)/*.o -o $(DIR2)/$(OUT)
-test:
-		$(CC) $(PRT) $(CFLAGS) $(DIR4)/main.c $(F) $(DIR)/$(DIR4)/main.o
-		$(CC) $(PRT) $(CFLAGS) $(DIR4)/board_test.c $(F) $(DIR)/$(DIR4)/board_test.o
-		$(CC) $(DIR)/$(DIR3)/board*.o $(DIR)/$(DIR4)/*.o -o $(DIR2)/$(OUT)-$(DIR4)
+PRT = -I src -I test -I thirdparty
+.PHONY: all runprog clean test
+all: bin/$(OUT)
+
+bin/$(OUT): build/src/main.o build/src/board_fill_plain.o build/src/board_print_plain.o build/src/board_read.o build/src/board.o
+		$(CC) build/src/main.o build/src/board_fill_plain.o build/src/board_print_plain.o build/src/board_read.o build/src/board.o -o $@
+
+build/src/main.o: src/main.c
+		$(CC) $(CFLAGS) -I src -c $< -o $@
+
+build/src/board_fill_plain.o: src/board_fill_plain.c
+		$(CC) $(CFLAGS) -I src -c $< -o $@
+
+build/src/board_print_plain.o: src/board_print_plain.c
+		$(CC) $(CFLAGS) -I src -c $< -o $@
+
+build/src/board_read.o: src/board_read.c
+		$(CC) $(CFLAGS) -I src -c $< -o $@
+
+build/src/board.o: src/board.c
+		$(CC) $(CFLAGS) -I src -c $< -o $@
+
+bin/$(OUT)-test: build/src/board_fill_plain.o build/src/board_print_plain.o build/src/board_read.o build/src/board.o build/test/main.o build/test/board_test.o
+		$(CC) build/src/board_fill_plain.o build/src/board_print_plain.o build/src/board_read.o build/src/board.o build/test/main.o build/test/board_test.o -o $@
+
+build/test/main.o: test/main.c
+		$(CC) $(CFLAGS) $(PRT) -c $< -o $@
+
+build/test/board_test.o: test/board_test.c
+		$(CC) $(CFLAGS) $(PRT) -c $< -o $@
+
+runprog:
+		./bin/$(OUT)
+
+test: bin/$(OUT)-test
 		./bin/chessviz-test
 		echo "Все тесты пройдены!"
+
 clean:
-		rm -rf $(DIR2)/chessviz* $(DIR)/$(DIR3)/*.o $(DIR)/$(DIR4)/*.o
+		rm -rf bin/chessviz* build/src/*.o build/test/*.o
