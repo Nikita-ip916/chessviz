@@ -3,7 +3,7 @@
 void ReadBoard(int move_count, int move_size, int move_reader[][move_size])
 {
     int i, j;
-    char ch;
+    char symbol;
     FILE* f;
     f = fopen("data.txt", "r");
     for (i = 0; i < move_count; i++) {
@@ -11,19 +11,19 @@ void ReadBoard(int move_count, int move_size, int move_reader[][move_size])
             move_reader[i][j] = 0;
         }
     }
-    i = 0; // i-строка матрицы b
-    j = 0; // j-столбец матрицы b
+    i = 0;
+    j = 0;
     do {
-        ch = fgetc(f);
-        if (ch == EOF) {
+        symbol = fgetc(f);
+        if (symbol == EOF || i >= move_count || j >= move_size) {
             break;
-        } else if (ch == '\n' || ch == ' ') {
+        } else if (symbol == '\n' || symbol == ' ') {
             j = 0;
             i++;
         } else {
-            move_reader[i][j] = ch;
+            move_reader[i][j] = symbol;
             j++;
         }
-    } while (ch != EOF);
+    } while (1);
     fclose(f);
 }
