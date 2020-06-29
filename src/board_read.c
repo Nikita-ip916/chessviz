@@ -15,7 +15,7 @@ void ReadBoard(int move_count, int move_size, int move_reader[][move_size])
     j = 0;
     do {
         symbol = fgetc(f);
-        if (symbol == EOF) {
+        if (symbol == EOF || i >= move_count || j >= move_size) {
             break;
         } else if (symbol == '\n' || symbol == ' ') {
             j = 0;
@@ -24,6 +24,6 @@ void ReadBoard(int move_count, int move_size, int move_reader[][move_size])
             move_reader[i][j] = symbol;
             j++;
         }
-    } while (symbol != EOF);
+    } while (1);
     fclose(f);
 }
