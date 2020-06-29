@@ -2,13 +2,14 @@ CC = gcc
 CFLAGS = -Wall -Werror
 OUT = chessviz
 PRT = -I src -I test -I thirdparty
+HEADERS = src/board_fill_plain.h src/board_print_plain.h src/board_read.h src/board.h
 .PHONY: all runprog clean test
 all: bin/$(OUT)
 
 bin/$(OUT): build/src/main.o build/src/board_fill_plain.o build/src/board_print_plain.o build/src/board_read.o build/src/board.o
 		$(CC) build/src/main.o build/src/board_fill_plain.o build/src/board_print_plain.o build/src/board_read.o build/src/board.o -o $@
 
-build/src/main.o: src/main.c
+build/src/main.o: src/main.c $(HEADERS)
 		$(CC) $(CFLAGS) -I src -c $< -o $@
 
 build/src/board_fill_plain.o: src/board_fill_plain.c
@@ -29,7 +30,7 @@ bin/$(OUT)-test: build/src/board_fill_plain.o build/src/board_print_plain.o buil
 build/test/main.o: test/main.c
 		$(CC) $(CFLAGS) $(PRT) -c $< -o $@
 
-build/test/board_test.o: test/board_test.c
+build/test/board_test.o: test/board_test.c $(HEADERS)
 		$(CC) $(CFLAGS) $(PRT) -c $< -o $@
 
 runprog:
